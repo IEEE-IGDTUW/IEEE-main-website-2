@@ -11,7 +11,6 @@ const navLinks = [
     { label: 'CHAPTERS', href: '#chapters' },
     { label: 'PEOPLE', href: '#team' },
      { label: 'FAQ', href: '#faq' },
-    { label: 'JOIN US', href: '#join' },
 ];
 
 const SunIcon = () => (
