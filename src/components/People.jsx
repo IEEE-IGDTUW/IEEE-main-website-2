@@ -272,7 +272,7 @@ function LeaderCard({ member }) {
             src={member.image}
             alt={member.name}
             loading="lazy"
-            className="h-full w-full object-cover object-top grayscale transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
+            className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
           />
         )}
 
@@ -327,8 +327,7 @@ function HeadCard({ member }) {
             src={member.image}
             alt={member.name}
             loading="lazy"
-            className="h-full w-full object-cover object-top grayscale transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
-          />
+            className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"          />
         )}
 
         {/* Bottom gradient on hover */}

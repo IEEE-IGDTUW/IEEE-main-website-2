@@ -86,35 +86,40 @@ function FlipCard({ item, index, reduce }) {
         >
           {/* FRONT: the question */}
           <span
-            aria-hidden={flipped}
-            className="absolute inset-0 flex flex-col rounded-xl border p-5"
-            style={{
-              ...face,
-              background: "color-mix(in srgb, var(--bg) 60%, transparent)",
-              borderColor: "var(--border)",
-              color: "var(--fg)",
-              boxShadow: "var(--card-shadow)",
-            }}
-          >
-            <span className="flex items-center justify-between">
-              <ChipIcon />
-              <span
-                className="rounded-full px-2.5 py-1 text-xs font-bold tracking-[0.2em]"
-                style={{ background: PAPAYA, color: PAPAYA_INK }}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
-            </span>
-            <span className="mt-4 block text-lg font-semibold leading-snug tracking-[-0.03em]">
-              {item.q}
-            </span>
-            <span
-              className="mt-auto inline-block self-start border-b-4 pb-1 text-[11px] font-bold tracking-[0.2em]"
-              style={{ color: "var(--fg)", borderColor: PAPAYA }}
-            >
-              FLIP FOR THE ANSWER
-            </span>
-          </span>
+  aria-hidden={flipped}
+  className="absolute inset-0 flex flex-col items-center justify-center rounded-xl border p-5 text-center"
+  style={{
+    ...face,
+    background: "color-mix(in srgb, var(--bg) 60%, transparent)",
+    borderColor: "var(--border)",
+    color: "var(--fg)",
+    boxShadow: "var(--card-shadow)",
+  }}
+>
+  {/* Icon and number badge at the top */}
+  <span className="absolute left-5 right-5 top-5 flex items-center justify-between">
+    <ChipIcon />
+    <span
+      className="rounded-full px-3.5 py-1 text-xs font-bold tracking-[0.2em]"
+      style={{ background: PAPAYA, color: PAPAYA_INK }}
+    >
+      {String(index + 1).padStart(2, "0")}
+    </span>
+  </span>
+
+  {/* Question centered horizontally and vertically */}
+  <span className="block w-full text-lg font-semibold leading-snug tracking-[-0.03em] sm:text-xl">
+    {item.q}
+  </span>
+
+  {/* Flip instruction at the bottom */}
+  <span
+    className="absolute bottom-5 border-b-4 pb-1 text-left text-[11px] font-bold tracking-[0.2em]"
+    style={{ color: "var(--fg)", borderColor: PAPAYA }}
+  >
+    FLIP FOR THE ANSWER
+  </span>
+</span>
 
           {/* BACK: the answer (Green Papaya) */}
           <span
