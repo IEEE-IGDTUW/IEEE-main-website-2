@@ -379,22 +379,15 @@ export default function People() {
 
           {/* Main heading */}
           <div className="lg:col-span-6">
-            <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.075em]">
+            <h2 className="text-[clamp(2.75rem,6vw,5.5rem)] font-semibold leading-[0.88] tracking-[-0.075em]">
               <span className="block text-[#043473] dark:text-[#E4D076]">
-                Good ideas
-              </span>
-
-              <span className="block text-[#043473] dark:text-[#E4D076]">
-                need
+                Good ideas need
               </span>
 
               <span className="block text-[#28518A] dark:text-[#D7D6AE]">
-                good
+                good company.
               </span>
 
-              <span className="block text-[#28518A] dark:text-[#D7D6AE]">
-                company.
-              </span>
             </h2>
           </div>
 

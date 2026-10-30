@@ -452,3 +452,12 @@ textarea::placeholder {
 section[id], footer[id] {
     scroll-margin-top: 90px;
 }
+
+/* Reduce main page heading sizes across the website */
+@media (min-width: 769px) {
+    main h1,
+    main h2 {
+        font-size: clamp(2.75rem, 5.5vw, 5.5rem) !important;
+        line-height: 0.98 !important;
+    }
+}

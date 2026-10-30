@@ -229,3 +229,63 @@ display: inline-flex;
 .ieee-navbar:not([data-dark="true"]) .ieee-tube-panel a:hover {
     background: rgba(71, 105, 152, 0.10);
 }
+
+
+/* ==========================================
+   PLAIN NAVIGATION PILLS
+========================================== */
+
+.ieee-plain-nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px;
+}
+
+.ieee-nav-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 17px;
+    border-radius: 999px;
+
+    color: var(--fg-muted);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.045em;
+
+    white-space: nowrap;
+    text-decoration: none;
+
+    background: transparent;
+    border: 1px solid transparent;
+
+    transition:
+            color 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.25s ease;
+}
+
+.ieee-nav-pill:hover {
+    color: var(--heading);
+    background: rgba(71, 105, 152, 0.10);
+}
+
+.ieee-nav-pill.active {
+    color: var(--accent-text);
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 3px 10px rgba(4, 52, 115, 0.16);
+}
+
+.dark .ieee-nav-pill.active {
+    color: #043473;
+    background: #D7D6AE;
+    border-color: #D7D6AE;
+}
+
+.ieee-nav-pill:active {
+    transform: scale(0.96);
+}

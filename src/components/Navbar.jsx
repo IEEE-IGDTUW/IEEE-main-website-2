@@ -1,7 +1,7 @@
 // Navbar.jsx
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import GooeyNav from './GooeyNav';
+
 import './Navbar.css';
 
 const navLinks = [
@@ -115,31 +115,28 @@ export default function Navbar() {
 
                 {/* TUBE 2: Nav links */}
                 <div className="ieee-tube ieee-tube--nav hidden justify-self-center lg:inline-flex">
-                    <GooeyNav
-                        items={navLinks}
-                        activeIndex={active}
-                        onChange={(i) => {
-                            setActive(i);
-                            clicking.current = true;
-                            setTimeout(() => {
-                                clicking.current = false;
-                            }, 1500);
-                        }}
-                        theme={theme}
-                        color={isDark ? '#D7D6AE' : '#043473'}
-                        activeTextColor={isDark ? '#043473' : '#D7D6AE'}
-                        colors={isDark ? ['#D7D6AE', '#C4C39B', '#E6E5C4'] : ['#043473', '#28518A', '#476998']}
-                        size="md"
-                        frame={false}
-                        animationTime={600}
-                        particleCount={15}
-                        timeVariance={300}
-                        spread={56}
-                        gooeyness={0.5}
-                        wobble={0.5}
-                        hoverEffect
-                        className="ieee-gooey-nav"
-                    />
+                    {/* TUBE 2: Plain Navigation Pills */}
+                    <div className="ieee-tube ieee-tube--nav hidden justify-self-center lg:inline-flex">
+                        <div className="ieee-plain-nav">
+                            {navLinks.map((link, index) => (
+                                <a
+                                    key={link.label}
+                                    href={link.href}
+                                    onClick={() => {
+                                        setActive(index);
+                                        clicking.current = true;
+
+                                        setTimeout(() => {
+                                            clicking.current = false;
+                                        }, 1500);
+                                    }}
+                                    className={`ieee-nav-pill ${active === index ? 'active' : ''}`}
+                                >
+                                    {link.label}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 

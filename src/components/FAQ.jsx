@@ -1,15 +1,11 @@
+
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 /* Green Papaya palette */
 const PAPAYA = "#E4D076";
-const PAPAYA_INK = "#0A2A5E"; // dark navy text that stays readable on papaya
+const PAPAYA_INK = "#0A2A5E";
 
-/* ------------------------------------------------------------------
-   EDIT THIS: your questions and answers.
-   The answers are general placeholder text. Replace them with your
-   branch's real details (links, fees, social handles, etc.).
-------------------------------------------------------------------- */
 const FAQS = [
   {
     q: "What benefits do I get as a student member of IEEE?",
@@ -63,7 +59,7 @@ function FlipCard({ item, index, reduce }) {
 
   return (
     <div
-      className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+      className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-1rem)]"
       style={{ perspective: 900 }}
     >
       <button
@@ -71,7 +67,7 @@ function FlipCard({ item, index, reduce }) {
         onClick={() => setFlipped((f) => !f)}
         aria-pressed={flipped}
         aria-label={item.q}
-        className="relative block h-60 w-full rounded-xl text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="relative block h-[220px] w-full rounded-xl text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
         style={{ outlineColor: "var(--fg)" }}
       >
         <motion.span
@@ -84,44 +80,45 @@ function FlipCard({ item, index, reduce }) {
               : { type: "spring", stiffness: 140, damping: 18 }
           }
         >
-          {/* FRONT: the question */}
+          {/* FRONT: Question */}
           <span
-  aria-hidden={flipped}
-  className="absolute inset-0 flex flex-col items-center justify-center rounded-xl border p-5 text-center"
-  style={{
-    ...face,
-    background: "color-mix(in srgb, var(--bg) 60%, transparent)",
-    borderColor: "var(--border)",
-    color: "var(--fg)",
-    boxShadow: "var(--card-shadow)",
-  }}
->
-  {/* Icon and number badge at the top */}
-  <span className="absolute left-5 right-5 top-5 flex items-center justify-between">
-    <ChipIcon />
-    <span
-      className="rounded-full px-3.5 py-1 text-xs font-bold tracking-[0.2em]"
-      style={{ background: PAPAYA, color: PAPAYA_INK }}
-    >
-      {String(index + 1).padStart(2, "0")}
-    </span>
-  </span>
+            aria-hidden={flipped}
+            className="absolute inset-0 flex flex-col items-center justify-center rounded-xl border p-5 text-center"
+            style={{
+              ...face,
+              background: "color-mix(in srgb, var(--bg) 60%, transparent)",
+              borderColor: "var(--border)",
+              color: "var(--fg)",
+              boxShadow: "var(--card-shadow)",
+            }}
+          >
+            {/* Icon and number */}
+            <span className="absolute left-5 right-5 top-5 flex items-center justify-between">
+              <ChipIcon />
 
-  {/* Question centered horizontally and vertically */}
-  <span className="block w-full text-lg font-semibold leading-snug tracking-[-0.03em] sm:text-xl">
-    {item.q}
-  </span>
+              <span
+                className="rounded-full px-3.5 py-1 text-xs font-bold tracking-[0.2em]"
+                style={{ background: PAPAYA, color: PAPAYA_INK }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </span>
 
-  {/* Flip instruction at the bottom */}
-  <span
-    className="absolute bottom-5 border-b-4 pb-1 text-left text-[11px] font-bold tracking-[0.2em]"
-    style={{ color: "var(--fg)", borderColor: PAPAYA }}
-  >
-    FLIP FOR THE ANSWER
-  </span>
-</span>
+            {/* Question */}
+            <span className="block w-full px-1 text-base font-semibold leading-snug tracking-[-0.03em] sm:text-lg">
+              {item.q}
+            </span>
 
-          {/* BACK: the answer (Green Papaya) */}
+            {/* Flip instruction */}
+            <span
+              className="absolute bottom-5 border-b-4 pb-1 text-left text-[10px] font-bold tracking-[0.2em]"
+              style={{ color: "var(--fg)", borderColor: PAPAYA }}
+            >
+              FLIP FOR THE ANSWER
+            </span>
+          </span>
+
+          {/* BACK: Answer */}
           <span
             aria-hidden={!flipped}
             className="absolute inset-0 flex flex-col rounded-xl border p-5"
@@ -140,6 +137,7 @@ function FlipCard({ item, index, reduce }) {
             >
               ANSWER
             </span>
+
             <span className="block text-sm font-medium leading-relaxed sm:text-base">
               {item.a}
             </span>
@@ -158,29 +156,29 @@ export default function FAQ() {
       id="faq"
       className="relative isolate overflow-hidden bg-bg text-fg"
     >
-      {/* Soft background gradient (same idea as the Hero, but lighter) */}
+      {/* Background gradient */}
       <div
         className="pointer-events-none absolute inset-0 -z-30"
         style={{
           background: `
-            radial-gradient(
-              ellipse at 82% 30%,
-              color-mix(in srgb, var(--palette-queen-blue) 38%, var(--bg)) 0%,
-              color-mix(in srgb, var(--palette-queen-blue) 14%, var(--bg)) 40%,
-              var(--bg) 75%
-            )
-          `,
+radial-gradient(
+    ellipse at 82% 30%,
+color-mix(in srgb, var(--palette-queen-blue) 38%, var(--bg)) 0%,
+color-mix(in srgb, var(--palette-queen-blue) 14%, var(--bg)) 40%,
+var(--bg) 75%
+)
+`,
         }}
       />
 
-      {/* Decorative grid (same as Hero) */}
+      {/* Decorative grid */}
       <div
         className="pointer-events-none absolute inset-0 -z-20 opacity-[0.16]"
         style={{
           backgroundImage: `
-            linear-gradient(to right, var(--palette-sage) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--palette-sage) 1px, transparent 1px)
-          `,
+linear-gradient(to right, var(--palette-sage) 1px, transparent 1px),
+linear-gradient(to bottom, var(--palette-sage) 1px, transparent 1px)
+`,
           backgroundSize: "72px 72px",
           maskImage:
             "linear-gradient(to right, transparent, black 35%, black 100%)",
@@ -189,50 +187,57 @@ export default function FAQ() {
         }}
       />
 
-      {/* Ambient Green Papaya glow */}
+      {/* Ambient glow */}
       <div
         className="pointer-events-none absolute right-0 top-1/4 -z-10 h-[420px] w-[420px] rounded-full opacity-30 blur-[100px]"
         style={{ backgroundColor: PAPAYA }}
       />
 
-      <div className="mx-auto max-w-[1800px] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
-        {/* ── Section header (same layout as THE PEOPLE) ── */}
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
+      <div className="mx-auto max-w-[1800px] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+
+        {/* Section header */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+
           {/* Label */}
           <div className="lg:col-span-3">
             <p
               className="pt-2 text-xs font-semibold tracking-[0.2em]"
               style={{ color: "var(--fg-muted)" }}
             >
-              <span className="text-blue-nude dark:text-highlight">05&nbsp;</span>
+              <span className="text-blue-nude dark:text-highlight">
+                05&nbsp;
+              </span>
               FAQ
             </p>
           </div>
 
-          {/* Main heading — same type as the other section titles */}
+          {/* Main heading */}
           <div className="lg:col-span-6">
-            <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.075em]">
+            <h2 className="text-[clamp(2.75rem,6vw,5.5rem)] font-semibold leading-[0.92] tracking-[-0.075em]">
               Got
               <span className="block">questions?</span>
-              
             </h2>
           </div>
 
-          {/* Description */}
-          
         </div>
 
-        {/* ── Cards ── */}
+        {/* FAQ Cards */}
         <div
-          className="mt-16 border-t pt-10 sm:mt-20"
+          className="mt-10 border-t pt-8 sm:mt-12 sm:pt-8"
           style={{ borderColor: "var(--border)" }}
         >
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-5">
             {FAQS.map((item, i) => (
-              <FlipCard key={item.q} item={item} index={i} reduce={reduce} />
+              <FlipCard
+                key={item.q}
+                item={item}
+                index={i}
+                reduce={reduce}
+              />
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

@@ -9,11 +9,12 @@ import FAQ from "./components/FAQ";
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import { ThemeProvider } from './context/ThemeContext';
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   return (
     <ThemeProvider>
-
+        <CustomCursor />
       <Navbar />
 
       <main>
