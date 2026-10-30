@@ -289,3 +289,64 @@ display: inline-flex;
 .ieee-nav-pill:active {
     transform: scale(0.96);
 }
+
+
+/* ==========================================
+   NAVBAR — FROSTED GLASS FOR BOTH THEMES
+========================================== */
+
+/* LIGHT MODE */
+.ieee-navbar:not([data-dark="true"]) {
+    --nav-bg: rgba(248, 247, 238, 0.82);
+    --nav-border: rgba(4, 52, 115, 0.16);
+    --nav-shadow:
+            0 8px 28px rgba(4, 52, 115, 0.10),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* DARK MODE */
+.ieee-navbar[data-dark="true"] {
+    --nav-bg: rgba(4, 52, 115, 0.78);
+    --nav-border: rgba(215, 214, 174, 0.20);
+    --nav-shadow:
+            0 8px 30px rgba(0, 0, 0, 0.25),
+            inset 0 1px 0 rgba(215, 214, 174, 0.10);
+}
+
+/* All three navbar capsules */
+.ieee-navbar .ieee-tube {
+    background: var(--nav-bg) !important;
+    border: 1px solid var(--nav-border);
+    box-shadow: var(--nav-shadow);
+
+    backdrop-filter: blur(24px) saturate(1.5);
+    -webkit-backdrop-filter: blur(24px) saturate(1.5);
+
+    transition:
+            background 0.35s ease,
+            border-color 0.35s ease,
+            box-shadow 0.35s ease;
+}
+
+/* Dark mode logo capsule */
+.ieee-navbar[data-dark="true"] .ieee-tube--logo {
+    background: rgba(4, 52, 115, 0.82) !important;
+}
+
+/* Dark mode navigation capsule */
+.ieee-navbar[data-dark="true"] .ieee-tube--nav {
+    background: rgba(4, 52, 115, 0.82) !important;
+}
+
+/* Dark mode theme toggle capsule */
+.ieee-navbar[data-dark="true"] .ieee-tube--actions {
+    background: rgba(4, 52, 115, 0.82) !important;
+}
+
+/* Mobile dropdown */
+.ieee-navbar[data-dark="true"] .ieee-tube-panel {
+    background: rgba(4, 52, 115, 0.94);
+    border-color: var(--nav-border);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
