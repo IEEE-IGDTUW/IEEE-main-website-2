@@ -159,6 +159,7 @@ function EventModal({ event, onClose }) {
         </button>
 
         <div className="max-h-[90vh] overflow-y-auto">
+
           {/* Event heading */}
           <div className="px-6 pb-5 pt-8 sm:px-9 sm:pt-10">
             <p className="mb-3 text-xs font-semibold tracking-[0.2em] text-[#8B9091]">
@@ -247,73 +248,86 @@ export default function Events() {
     <>
       <section id="events" className="bg-bg-alt text-fg">
         <div className="mx-auto max-w-[1800px] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
-          {/* Section heading */}
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
-            <div className="lg:col-span-3">
-              <p className="pt-2 text-xs font-semibold tracking-[0.22em] text-black/50">
-                <span className="mr-3 text-[#476998] dark:text-[#E4D076]">02</span>
+
+          {/* LEFT TEXT + RIGHT CAROUSEL */}
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
+
+            {/* LEFT: Text Content */}
+            <div className="lg:col-span-5">
+
+              {/* Section label */}
+              <p className="mb-8 pt-2 text-xs font-semibold tracking-[0.22em] text-black/50">
+                <span className="mr-3 text-[#476998] dark:text-[#E4D076]">
+                  02
+                </span>
                 OUR JOURNEY
               </p>
-            </div>
 
-            <div className="lg:col-span-6">
-              <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-bold leading-[0.88] tracking-[-0.07em]">
-              <span className="block text-[#043473] dark:text-[#E4D076]">
+              {/* Main heading */}
+              <h2 className="text-[clamp(3.5rem,6.5vw,7rem)] font-bold leading-[0.88] tracking-[-0.07em]">
+                <span className="block text-[#043473] dark:text-[#E4D076]">
                   Moments
-              </span>
+                </span>
+
                 <span className="block text-[#476998] dark:text-[#D7D6AE]">
                   that matter.
                 </span>
               </h2>
-            </div>
 
-            <div className="flex items-start justify-between gap-5 lg:col-span-3 lg:pt-16">
-              <p className="max-w-[260px] text-base leading-[1.8] text-black/55 sm:text-lg">
+              {/* Description */}
+              <p className="mt-8 max-w-[420px] text-base leading-[1.8] text-black/55 sm:text-lg">
                 Ideas, people, and experiences that bring the IEEE IGDTUW
                 community together. Select an event to explore its story.
               </p>
+
             </div>
+
+            {/* RIGHT: Circular Carousel */}
+            <div className="relative min-h-[420px] w-full lg:col-span-7 lg:mt-0">
+
+              <CircularCarousel
+                items={events.map((event) => ({
+                  ...event,
+
+                  // Use the third image as the thumbnail for Events 1 and 2.
+                  src:
+                    event.id === 1 || event.id === 2
+                      ? event.images[2]
+                      : event.images[0],
+
+                  alt: event.title,
+                  subtitle: event.subtitle,
+                }))}
+                onItemClick={(item) => setSelectedEvent(item)}
+                cardWidth={280}
+                aspectRatio={0.75}
+                gap={24}
+                autoplay={false}
+                draggable
+                momentum
+                snap
+                pauseOnHover
+                focusOnClick
+                parallax
+                depthFade
+                cornerRadius={18}
+                captions
+              />
+
+            </div>
+
           </div>
 
-          {/* Circular carousel */}
-          <div className="relative mt-12 min-h-[420px] w-full sm:mt-16">
-            <CircularCarousel
-              items={events.map((event) => ({
-                ...event,
-
-                // Use the third image as the thumbnail for Events 1 and 2.
-                src:
-                  event.id === 1 || event.id === 2
-                    ? event.images[2]
-                    : event.images[0],
-
-                alt: event.title,
-                subtitle: event.subtitle,
-              }))}
-              onItemClick={(item) => setSelectedEvent(item)}
-              cardWidth={280}
-              aspectRatio={0.75}
-              gap={24}
-              autoplay={false}
-              draggable
-              momentum
-              snap
-              pauseOnHover
-              focusOnClick
-              parallax
-              depthFade
-              cornerRadius={18}
-              captions
-            />
-          </div>
-
-          <div className="mt-10 flex flex-col justify-between gap-3 border-t border-t border-[#28518A]/40 dark:border-[#D7D6AE]/25 pt-5 text-xs tracking-wider text-black/45 sm:flex-row">
+          {/* Section footer */}
+          <div className="mt-10 flex flex-col justify-between gap-3 border-t border-[#28518A]/40 pt-5 text-xs tracking-wider text-black/45 dark:border-[#D7D6AE]/25 sm:flex-row">
             <p>IEEE STUDENT BRANCH · IGDTUW</p>
             <p>PAST EVENTS / 2024–2026</p>
           </div>
+
         </div>
       </section>
 
+      {/* Event details modal */}
       <EventModal
         event={selectedEvent}
         onClose={() => setSelectedEvent(null)}
