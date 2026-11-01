@@ -444,3 +444,25 @@
         transform: translateY(-15px) rotate(8deg);
     }
 }
+
+@media (max-width: 640px) {
+    .profile-card__info {
+        padding: 12px;
+    }
+
+    .profile-card__info h2 {
+        font-size: 1.25rem;
+        line-height: 1.35;
+    }
+
+    .profile-card__info p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    .profile-card__photo {
+        inset: 8px;
+        width: calc(100% - 16px);
+        height: calc(100% - 16px);
+    }
+}

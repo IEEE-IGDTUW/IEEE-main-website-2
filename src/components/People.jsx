@@ -364,7 +364,7 @@ export default function People() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-7">
             {leadership.map((member) => (
               <LeaderCard key={member.id} member={member} />
             ))}
