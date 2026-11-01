@@ -198,18 +198,7 @@ linear-gradient(to bottom, var(--palette-sage) 1px, transparent 1px)
         {/* Section header */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
 
-          {/* Label */}
-          <div className="lg:col-span-3">
-            <p
-              className="pt-2 text-xs font-semibold tracking-[0.2em]"
-              style={{ color: "var(--fg-muted)" }}
-            >
-              <span className="text-blue-nude dark:text-highlight">
-                05&nbsp;
-              </span>
-              FAQ
-            </p>
-          </div>
+
 
           {/* Main heading */}
           <div className="lg:col-span-6">

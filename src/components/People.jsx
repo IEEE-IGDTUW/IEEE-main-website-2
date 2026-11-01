@@ -1,10 +1,13 @@
 // People.jsx — IEEE IGDTUW Senior Execom 2026–2027
 
+import ProfileCard from './ProfileCard';
+
 const BASE = `${import.meta.env.BASE_URL}IEEE Senior Execomm 2026-2027/`;
 
 // ─── Team data ───────────────────────────────────────────────────────────────
 // Leadership cluster is shown first and larger; the rest in a uniform grid.
 const leadership = [
+  // Chairpersons
   {
     id: '01',
     name: 'Himani Gupta',
@@ -14,15 +17,17 @@ const leadership = [
     initials: 'HG',
   },
   {
-    id: '02',
+    id: '04',
     name: 'Anushree Jain',
     role: 'WIE Chairperson',
     image: `${BASE}Anushree Jain_WIE_Chairperson.jpeg`,
     heicFallback: false,
     initials: 'AJ',
   },
+
+  // Vice-Chairpersons
   {
-    id: '03',
+    id: '02',
     name: 'Gunjan Aggarwal',
     role: 'IEEE Vice-Chairperson',
     image: `${BASE}Gunjan Aggarwal_IEEE Vice-chairperson.JPG`,
@@ -30,15 +35,17 @@ const leadership = [
     initials: 'GA',
   },
   {
-    id: '04',
+    id: '05',
     name: 'Sneha Yadav',
     role: 'WIE Vice-Chairperson',
     image: `${BASE}Sneha Yadav _WIE Vice Chairperson_.jpg`,
     heicFallback: false,
     initials: 'SY',
   },
+
+  // General Secretaries
   {
-    id: '05',
+    id: '03',
     name: 'Jessica Malik',
     role: 'IEEE General Secretary',
     image: `${BASE}Jessica Malik_IEEE GenSec.jpg`,
@@ -53,6 +60,8 @@ const leadership = [
     heicFallback: false,
     initials: 'MG',
   },
+
+  // Treasurer
   {
     id: '07',
     name: 'Saanvi Singh',
@@ -262,97 +271,35 @@ function InitialsAvatar({ initials, large = false }) {
 
 function LeaderCard({ member }) {
   return (
-    <article className="group min-w-0">
-      {/* Portrait */}
-      <div className="relative aspect-[3/4] overflow-hidden" style={{ backgroundColor: 'var(--bg-alt)' }}>
-        {member.heicFallback || !member.image ? (
-          <InitialsAvatar initials={member.initials} large />
-        ) : (
-          <img
-            src={member.image}
-            alt={member.name}
-            loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-          />
-        )}
-
-        {/* Number badge */}
-        <span className="absolute left-4 top-4 text-xs font-semibold tracking-wider text-white drop-shadow-md">
-          {member.id}
-        </span>
-
-        {/* Bottom gradient overlay on hover */}
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-28 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          style={{
-            background:
-              'linear-gradient(to top, rgba(4,52,115,0.55) 0%, transparent 100%)',
-          }}
-        />
-      </div>
-
-      {/* Name and role */}
-      <div className="pt-5">
-        <h3 className="text-xl font-semibold tracking-[-0.045em] sm:text-2xl">
-          {member.name}
-        </h3>
-        <p
-          className="mt-1.5 text-sm font-medium leading-6 sm:text-base"
-          style={{ color: 'var(--fg-muted)' }}
-        >
-          {member.role}
-        </p>
-        {member.heicFallback && (
-          <p className="mt-1 text-[10px] tracking-wider" style={{ color: 'var(--highlight)' }}>
-            ⚠ Photo pending conversion
-          </p>
-        )}
-      </div>
-    </article>
+      <ProfileCard
+          avatarUrl={member.image}
+          name={member.name}
+          title={member.role}
+          theme={document.documentElement.classList.contains('dark') ? 'dark' : 'light'}
+          enableTilt={true}
+          tiltStrength={12}
+          parallax={8}
+          holo={0.5}
+          glare={0.4}
+          radius={16}
+      />
   );
 }
 
 function HeadCard({ member }) {
   return (
-    <article className="group min-w-0">
-      {/* Portrait */}
-      <div
-        className="relative aspect-square overflow-hidden"
-        style={{ backgroundColor: 'var(--bg-alt)' }}
-      >
-        {member.heicFallback || !member.image ? (
-          <InitialsAvatar initials={member.initials} />
-        ) : (
-          <img
-            src={member.image}
-            alt={member.name}
-            loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"          />
-        )}
-
-        {/* Bottom gradient on hover */}
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-16 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          style={{
-            background:
-              'linear-gradient(to top, rgba(4,52,115,0.5) 0%, transparent 100%)',
-          }}
-        />
-      </div>
-
-      {/* Name and role */}
-      <div className="pt-4">
-        <h3 className="text-base font-semibold tracking-[-0.04em] sm:text-lg">
-          {member.name}
-        </h3>
-        <p
-          className="mt-1 text-xs font-medium leading-5 sm:text-sm"
-          style={{ color: 'var(--fg-muted)' }}
-        >
-          {member.role}
-        </p>
-      </div>
-    </article>
+      <ProfileCard
+          avatarUrl={member.image}
+          name={member.name}
+          title={member.role}
+          theme={document.documentElement.classList.contains('dark') ? 'dark' : 'light'}
+          enableTilt={true}
+          tiltStrength={12}
+          parallax={8}
+          holo={0.5}
+          glare={0.4}
+          radius={16}
+      />
   );
 }
 
@@ -369,13 +316,7 @@ export default function People() {
         {/* ── Section header ── */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
 
-          {/* Label */}
-          <div className="lg:col-span-3">
-            <p className="pt-2 text-xs font-semibold tracking-[0.2em]" style={{ color: 'var(--fg-muted)' }}>
-              <span style={{ color: 'var(--highlight)' }}>04&nbsp;</span>
-              THE PEOPLE
-            </p>
-          </div>
+
 
           {/* Main heading */}
           <div className="lg:col-span-6">
@@ -460,7 +401,7 @@ export default function People() {
             color: 'var(--fg-muted)',
           }}
         >
-          <p>IEEE STUDENT BRANCH · IGDTUW</p>
+
           <p>THE PEOPLE BEHIND THE PROGRESS · 2026–2027</p>
         </div>
 

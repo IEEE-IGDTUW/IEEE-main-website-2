@@ -36,16 +36,7 @@ export default function About() {
       >
         <div className="mx-auto max-w-[1800px] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
 
-          {/* Top divider & label */}
-          <div className="flex items-center justify-between border-b border-border/30 pb-9">
-          <span className="text-xs font-bold tracking-[0.2em] text-secondary">
-            01
-          </span>
 
-            <span className="text-[10px] font-semibold tracking-[0.2em] text-fg-muted sm:text-xs">
-            ABOUT · AIM & MISSION
-          </span>
-          </div>
 
           {/* Main headline and intro */}
           <div className="grid grid-cols-1 gap-12 pt-14 lg:grid-cols-12 lg:gap-10">
@@ -96,12 +87,7 @@ export default function About() {
           {/* Central Aim Statement */}
           <div className="mt-14 sm:mt-20">
             <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-surface/60 p-8 sm:p-12 lg:p-14 shadow-lg backdrop-blur-sm">
-              <div className="flex items-center gap-3">
-                <span className="h-px w-8 bg-secondary" />
-                <p className="text-xs font-bold tracking-[0.22em] text-secondary">
-                  OUR AIM
-                </p>
-              </div>
+
 
               <blockquote className="mt-6 max-w-5xl text-2xl font-bold leading-snug tracking-tight text-heading sm:text-3xl lg:text-4xl">
                 &ldquo;We aim to foster innovation and technical excellence among young engineers, promoting socially responsible advancements that contribute to a globally competitive India.&rdquo;

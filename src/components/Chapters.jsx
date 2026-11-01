@@ -405,25 +405,7 @@ export default function Chapters() {
       <style>{css}</style>
 
       <div className="mx-auto max-w-[1800px] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
-        {/* Top label */}
-        <div
-          className="flex items-center justify-between border-b pb-9"
-          style={{ borderColor: "var(--chapter-line)" }}
-        >
-          <span
-            className="text-xs font-bold tracking-[0.2em]"
-            style={{ color: "var(--heading)" }}
-          >
-            03
-          </span>
 
-          <span
-            className="text-[10px] font-semibold tracking-[0.2em] sm:text-xs"
-            style={{ color: "var(--chapter-muted)" }}
-          >
-            FIND YOUR FREQUENCY
-          </span>
-        </div>
 
         {/* Heading and description */}
         <div className="grid grid-cols-1 gap-8 py-16 sm:py-20 lg:grid-cols-12 lg:items-center lg:gap-12 lg:py-24">
@@ -486,14 +468,7 @@ export default function Chapters() {
           ))}
         </div>
 
-        {/* Footer */}
-        <div
-          className="mt-8 flex flex-col justify-between gap-3 text-[10px] tracking-[0.15em] sm:flex-row sm:text-xs"
-          style={{ color: "var(--chapter-muted)" }}
-        >
-          <span>IEEE STUDENT BRANCH · IGDTUW</span>
-          <span>EXPLORE · CONNECT · BUILD</span>
-        </div>
+
       </div>
     </section>
   );

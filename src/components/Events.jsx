@@ -227,7 +227,7 @@ function EventModal({ event, onClose }) {
 
             <div className="mt-7 border-t border-[#8B9091]/25 pt-5">
               <p className="text-xs tracking-wider text-[#8B9091]">
-                IEEE STUDENT BRANCH · IGDTUW
+                  · IGDTUW
               </p>
 
               <p className="mt-2 text-sm text-[#B2B39D]">
@@ -255,13 +255,6 @@ export default function Events() {
             {/* LEFT: Text Content */}
             <div className="lg:col-span-5">
 
-              {/* Section label */}
-              <p className="mb-8 pt-2 text-xs font-semibold tracking-[0.22em] text-black/50">
-                <span className="mr-3 text-[#476998] dark:text-[#E4D076]">
-                  02
-                </span>
-                OUR JOURNEY
-              </p>
 
               {/* Main heading */}
               <h2 className="text-[clamp(3.5rem,6.5vw,7rem)] font-bold leading-[0.88] tracking-[-0.07em]">
@@ -320,7 +313,7 @@ export default function Events() {
 
           {/* Section footer */}
           <div className="mt-10 flex flex-col justify-between gap-3 border-t border-[#28518A]/40 pt-5 text-xs tracking-wider text-black/45 dark:border-[#D7D6AE]/25 sm:flex-row">
-            <p>IEEE STUDENT BRANCH · IGDTUW</p>
+
             <p>PAST EVENTS / 2024–2026</p>
           </div>
 

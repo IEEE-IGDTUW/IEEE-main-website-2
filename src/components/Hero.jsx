@@ -120,11 +120,7 @@ export default function Hero() {
             }}
           />
 
-          <p className="text-xs font-semibold tracking-[0.22em] text-fg-muted sm:text-sm">
-            IEEE STUDENT BRANCH
-            <span className="mx-2">·</span>
-            IGDTUW
-          </p>
+
         </div>
 
         {/* Main heading */}
@@ -208,28 +204,11 @@ export default function Hero() {
             style={{ backgroundColor: 'var(--secondary)' }}
           />
 
-          <p className="text-[10px] font-semibold tracking-[0.2em] text-fg-muted sm:text-xs">
-            INNOVATE
-            <span className="mx-2 text-highlight">/</span>
-            COLLABORATE
-            <span className="mx-2 text-highlight">/</span>
-            INSPIRE
-          </p>
+
         </div>
       </div>
 
-      {/* Bottom-right indicator */}
-      <div className="absolute bottom-8 right-6 z-10 hidden items-center gap-8 text-xs font-semibold text-fg-muted md:flex lg:right-16">
-        <span className="tracking-widest">
-          <span className="text-highlight">01</span> / 04
-        </span>
 
-        <p className="max-w-40 text-right leading-5">
-          THE NEXT GENERATION
-          <br />
-          OF ENGINEERS
-        </p>
-      </div>
 
       {/* Bottom accent line */}
       <div
