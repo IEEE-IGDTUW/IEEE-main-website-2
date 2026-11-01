@@ -1,61 +1,60 @@
-
 'use client';
 
 import { memo, useEffect, useRef } from 'react';
 import './ProfileCard.css';
 
 const THEMES = {
-  dark: {
-    '--pc-frame': 'rgba(38, 35, 46, 0.66)',
-    '--pc-frame-edge': 'rgba(255, 255, 255, 0.08)',
-    '--pc-frame-highlight': 'rgba(255, 255, 255, 0.07)',
-    '--pc-frame-shadow':
-      '0 22px 44px -20px rgba(0, 0, 0, 0.8), 0 6px 16px -8px rgba(0, 0, 0, 0.5)',
-    '--pc-tile': 'linear-gradient(180deg, #3a3644 0%, #27242f 100%)',
-    '--pc-tile-edge': 'rgba(255, 255, 255, 0.07)',
-    '--pc-tile-highlight': 'rgba(255, 255, 255, 0.12)',
-    '--pc-tile-shadow': '0 4px 10px -4px rgba(0, 0, 0, 0.7)',
-    '--pc-ink': '#f4f4f5',
-    '--pc-muted': 'rgba(244, 244, 245, 0.6)',
-    '--pc-hover': 'brightness(1.12)',
-    '--pc-press': 'brightness(0.8)',
-    '--pc-shade': 'rgba(0, 0, 0, 0.4)',
-  },
+    dark: {
+        '--pc-frame': 'rgba(38, 35, 46, 0.66)',
+        '--pc-frame-edge': 'rgba(255, 255, 255, 0.08)',
+        '--pc-frame-highlight': 'rgba(255, 255, 255, 0.07)',
+        '--pc-frame-shadow':
+            '0 22px 44px -20px rgba(0, 0, 0, 0.8), 0 6px 16px -8px rgba(0, 0, 0, 0.5)',
+        '--pc-tile': 'linear-gradient(180deg, #3a3644 0%, #27242f 100%)',
+        '--pc-tile-edge': 'rgba(255, 255, 255, 0.07)',
+        '--pc-tile-highlight': 'rgba(255, 255, 255, 0.12)',
+        '--pc-tile-shadow': '0 4px 10px -4px rgba(0, 0, 0, 0.7)',
+        '--pc-ink': '#f4f4f5',
+        '--pc-muted': 'rgba(244, 244, 245, 0.6)',
+        '--pc-hover': 'brightness(1.12)',
+        '--pc-press': 'brightness(0.8)',
+        '--pc-shade': 'rgba(0, 0, 0, 0.4)',
+    },
 
-  light: {
-    '--pc-frame': 'rgba(240, 240, 243, 0.8)',
-    '--pc-frame-edge': 'rgba(24, 24, 27, 0.07)',
-    '--pc-frame-highlight': 'rgba(255, 255, 255, 0.95)',
-    '--pc-frame-shadow':
-      '0 22px 44px -22px rgba(24, 24, 27, 0.3), 0 6px 16px -10px rgba(24, 24, 27, 0.16)',
-    '--pc-tile': 'linear-gradient(180deg, #ffffff 0%, #f6f6f8 100%)',
-    '--pc-tile-edge': 'rgba(24, 24, 27, 0.08)',
-    '--pc-tile-highlight': 'rgba(255, 255, 255, 1)',
-    '--pc-tile-shadow': '0 4px 10px -5px rgba(24, 24, 27, 0.25)',
-    '--pc-ink': '#27272a',
-    '--pc-muted': 'rgba(39, 39, 42, 0.6)',
-    '--pc-hover': 'brightness(0.97)',
-    '--pc-press': 'brightness(0.92)',
-    '--pc-shade': 'rgba(24, 24, 27, 0.14)',
-  },
+    light: {
+        '--pc-frame': 'rgba(240, 240, 243, 0.8)',
+        '--pc-frame-edge': 'rgba(24, 24, 27, 0.07)',
+        '--pc-frame-highlight': 'rgba(255, 255, 255, 0.95)',
+        '--pc-frame-shadow':
+            '0 22px 44px -22px rgba(24, 24, 27, 0.3), 0 6px 16px -10px rgba(24, 24, 27, 0.16)',
+        '--pc-tile': 'linear-gradient(180deg, #ffffff 0%, #f6f6f8 100%)',
+        '--pc-tile-edge': 'rgba(24, 24, 27, 0.08)',
+        '--pc-tile-highlight': 'rgba(255, 255, 255, 1)',
+        '--pc-tile-shadow': '0 4px 10px -5px rgba(24, 24, 27, 0.25)',
+        '--pc-ink': '#27272a',
+        '--pc-muted': 'rgba(39, 39, 42, 0.6)',
+        '--pc-hover': 'brightness(0.97)',
+        '--pc-press': 'brightness(0.92)',
+        '--pc-shade': 'rgba(24, 24, 27, 0.14)',
+    },
 };
 
 const FOILS = {
-  dark: {
-    '--pc-blend': 'color-dodge',
-    '--pc-holo-filter': 'hue-rotate(0deg)',
-    '--pc-sheen': 'rgba(255, 255, 255, 0.16)',
-  },
+    dark: {
+        '--pc-blend': 'color-dodge',
+        '--pc-holo-filter': 'hue-rotate(0deg)',
+        '--pc-sheen': 'rgba(255, 255, 255, 0.16)',
+    },
 
-  light: {
-    '--pc-blend': 'multiply',
-    '--pc-holo-filter': 'invert(1) hue-rotate(180deg)',
-    '--pc-sheen': 'rgba(255, 255, 255, 0)',
-  },
+    light: {
+        '--pc-blend': 'multiply',
+        '--pc-holo-filter': 'invert(1) hue-rotate(180deg)',
+        '--pc-sheen': 'rgba(255, 255, 255, 0)',
+    },
 };
 
 const GRAIN = `url("data:image/svg+xml,${encodeURIComponent(
-"<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500'><filter id='g' x='0' y='0' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0.55 0 0 0 -0.24 0.55 0 0 0 -0.24 0.55 0 0 0 -0.24 0 0 0 0 1'/></filter><rect width='100%' height='100%' filter='url(#g)'/></svg>"
+    "<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500'><filter id='g' x='0' y='0' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0.55 0 0 0 -0.24 0.55 0 0 0 -0.24 0.55 0 0 0 -0.24 0 0 0 0 1'/></filter><rect width='100%' height='100%' filter='url(#g)'/></svg>"
 )}")`;
 
 const clamp = (value, min, max) =>
@@ -97,6 +96,7 @@ const ProfileCard = ({
                          mobileTiltSensitivity = 5,
                          intro = true,
                          className = '',
+                         cardType = 'leader',
                      }) => {
     const rootRef = useRef(null);
     const engineRef = useRef(null);
@@ -112,7 +112,6 @@ const ProfileCard = ({
     const settingsRef = useRef(settings);
     settingsRef.current = settings;
 
-    // 3D tilt and pointer animation
     useEffect(() => {
         const root = rootRef.current;
         if (!root) return;
@@ -156,28 +155,14 @@ const ProfileCard = ({
                 `${((y.p + 1) * 0.5 * size.height).toFixed(1)}px`
             );
 
-            style.setProperty(
-                '--pc-pointer-x',
-                `${((x.p + 1) * 50).toFixed(2)}%`
-            );
-
-            style.setProperty(
-                '--pc-pointer-y',
-                `${((y.p + 1) * 50).toFixed(2)}%`
-            );
+            style.setProperty('--pc-pointer-x', `${((x.p + 1) * 50).toFixed(2)}%`);
+            style.setProperty('--pc-pointer-y', `${((y.p + 1) * 50).toFixed(2)}%`);
 
             style.setProperty('--pc-band-x', `${50 + x.p * 15}%`);
             style.setProperty('--pc-band-y', `${50 + y.p * 15}%`);
 
-            style.setProperty(
-                '--pc-rotate-x',
-                `${(y.p * angle).toFixed(3)}deg`
-            );
-
-            style.setProperty(
-                '--pc-rotate-y',
-                `${(-x.p * angle).toFixed(3)}deg`
-            );
+            style.setProperty('--pc-rotate-x', `${(y.p * angle).toFixed(3)}deg`);
+            style.setProperty('--pc-rotate-y', `${(-x.p * angle).toFixed(3)}deg`);
 
             style.setProperty(
                 '--pc-shift-x',
@@ -208,9 +193,7 @@ const ProfileCard = ({
             for (let i = 0; i < steps; i++) {
                 for (const axis of [x, y]) {
                     axis.v +=
-                        (stiffness * (axis.target - axis.p) -
-                            damping * axis.v) *
-                        h;
+                        (stiffness * (axis.target - axis.p) - damping * axis.v) * h;
 
                     axis.p += axis.v * h;
                 }
@@ -243,6 +226,7 @@ const ProfileCard = ({
 
         const wake = () => {
             if (raf) return;
+
             last = performance.now();
             raf = requestAnimationFrame(frame);
         };
@@ -287,12 +271,14 @@ const ProfileCard = ({
 
         const onDown = (event) => {
             if (event.pointerType === 'mouse') return;
+
             touchId = event.pointerId;
             aimAt(event);
         };
 
         const onUp = (event) => {
             if (event.pointerId !== touchId) return;
+
             touchId = null;
             release();
         };
@@ -344,7 +330,6 @@ const ProfileCard = ({
         engineRef.current?.write();
     }, [enableTilt, tiltStrength, parallax]);
 
-    // Optional mobile tilt
     useEffect(() => {
         const root = rootRef.current;
         if (!root || !enableMobileTilt) return;
@@ -364,8 +349,8 @@ const ProfileCard = ({
 
         const listen = () => {
             if (listening) return;
-            listening = true;
 
+            listening = true;
             window.addEventListener('deviceorientation', onOrientation);
         };
 
@@ -406,7 +391,7 @@ const ProfileCard = ({
     return (
         <div
             ref={rootRef}
-            className={`profile-card ${className}`.trim()}
+            className={`profile-card profile-card--${cardType} ${className}`.trim()}
             style={{
                 ...THEMES[palette],
                 ...FOILS[foil],
@@ -434,7 +419,6 @@ const ProfileCard = ({
             <span className="profile-card__holo-shift" />
           </span>
 
-                    {/* Animated floating particles */}
                     <span className="profile-card__particles" />
 
                     {avatarUrl && (
