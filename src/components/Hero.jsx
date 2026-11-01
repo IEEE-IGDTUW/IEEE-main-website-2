@@ -1,220 +1,201 @@
-
 import Navbar from './Navbar';
 import CrystalizedBall from './CrystalizedBall';
 import GhostCursor from './GhostCursor';
 import StarBorder from './StarBorder';
 
 export default function Hero() {
-  const isDark = document.documentElement.classList.contains('dark');
+    const isDark = document.documentElement.classList.contains('dark');
 
-  return (
-    <section
-      id="home"
-      className="relative isolate min-h-screen overflow-hidden bg-bg text-fg"
-    >
-      {/* Background gradient using IEEE brand palette */}
-      {/* Light/Dark theme-compatible background */}
-<div
-  className="pointer-events-none absolute inset-0 -z-30"
-  style={{
-    background: `
-      radial-gradient(
-        ellipse at 78% 42%,
-        var(--palette-queen-blue) 0%,
-        var(--bg-alt) 38%,
-        var(--bg) 78%
-      )
-    `,
-  }}
-/>
+    return (
+        <section
+            id="home"
+            className="relative isolate min-h-screen overflow-hidden bg-bg text-fg"
+        >
+            {/* Background gradient */}
+            <div
+                className="pointer-events-none absolute inset-0 -z-30"
+                style={{
+                    background: `
+            radial-gradient(
+              ellipse at 78% 42%,
+              var(--palette-queen-blue) 0%,
+              var(--bg-alt) 38%,
+              var(--bg) 78%
+            )
+          `,
+                }}
+            />
 
-      {/* Decorative grid */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-20 opacity-[0.16]"
-        style={{
-          backgroundImage: `
+            {/* Decorative grid */}
+            <div
+                className="pointer-events-none absolute inset-0 -z-20 opacity-[0.16]"
+                style={{
+                    backgroundImage: `
             linear-gradient(to right, var(--palette-sage) 1px, transparent 1px),
             linear-gradient(to bottom, var(--palette-sage) 1px, transparent 1px)
           `,
-          backgroundSize: '72px 72px',
-          maskImage:
-            'linear-gradient(to right, transparent, black 35%, black 100%)',
-          WebkitMaskImage:
-            'linear-gradient(to right, transparent, black 35%, black 100%)',
-        }}
-      />
+                    backgroundSize: '72px 72px',
+                    maskImage:
+                        'linear-gradient(to right, transparent, black 35%, black 100%)',
+                    WebkitMaskImage:
+                        'linear-gradient(to right, transparent, black 35%, black 100%)',
+                }}
+            />
 
-      {/* Ambient brand-colour glow */}
-      <div
-        className="pointer-events-none absolute right-0 top-1/4 -z-10 h-[500px] w-[500px] rounded-full opacity-20 blur-[100px]"
-        style={{ backgroundColor: 'var(--palette-papaya)' }}
-      />
+            {/* Ambient brand-colour glow */}
+            <div
+                className="pointer-events-none absolute right-0 top-1/4 -z-10 h-[500px] w-[500px] rounded-full opacity-20 blur-[100px]"
+                style={{ backgroundColor: 'var(--palette-papaya)' }}
+            />
 
-      {/* Navbar */}
-      <Navbar />
+            {/* Navbar */}
+            <Navbar />
 
-      {/* Ghost Cursor Effect */}
-      <GhostCursor
-        color="#8B9091"
-        brightness={0.55}
-        size={70}
-        trailLength={35}
-        inertia={0.5}
-        turbulence={0.35}
-        drift={0.12}
-        detail={0.65}
-        grainIntensity={0.02}
-        bloomStrength={0.2}
-        bloomRadius={0.7}
-        theme="dark"
-        zIndex={5}
-        intro={false}
-      />
+            {/* Ghost Cursor Effect */}
+            <GhostCursor
+                color="#8B9091"
+                brightness={0.55}
+                size={70}
+                trailLength={35}
+                inertia={0.5}
+                turbulence={0.35}
+                drift={0.12}
+                detail={0.65}
+                grainIntensity={0.02}
+                bloomStrength={0.2}
+                bloomRadius={0.7}
+                theme="dark"
+                zIndex={5}
+                intro={false}
+            />
 
-      {/* Crystalized Ball */}
-      <div
-        className="pointer-events-auto absolute left-1/2 top-[104px] -z-10
+            {/* Crystalized Ball */}
+            <div
+                className="
+          pointer-events-auto absolute left-1/2 top-[104px] -z-10
           h-[210px] w-[210px] -translate-x-1/2
           sm:left-auto sm:right-[-8%] sm:top-[12%] sm:h-[580px] sm:w-[580px] sm:translate-x-0
           lg:right-[1%] lg:top-1/2 lg:h-[min(76vh,760px)] lg:w-[min(76vh,760px)]
-          lg:-translate-y-1/2"
-        aria-hidden="true"
-      >
-        <div className="h-full w-full">
-          <CrystalizedBall
-            preset="abyss"
-            color="#E4D076"
-            theme={isDark ? 'dark' : 'light'}
-            size={0.72}
-            strands={5}
-            crackle={0.65}
-            flares={0.6}
-            glow={0.9}
-            sparks={0.5}
-            particleCount={12000}
-            fill={0.55}
-            motion="orbit"
-            particleShape="round"
-            depth={0.7}
-            sway={0.6}
-            twinkle={0.55}
-            haze={0.6}
-            speed={0.8}
-            dustSpeed={0.8}
-            interactive
-            hoverStrength={0.7}
-            intro
-          />
-        </div>
-      </div>
+          lg:-translate-y-1/2
+        "
+                aria-hidden="true"
+            >
+                <div className="h-full w-full">
+                    <CrystalizedBall
+                        preset="abyss"
+                        color="#E4D076"
+                        theme={isDark ? 'dark' : 'light'}
+                        size={0.72}
+                        strands={5}
+                        crackle={0.65}
+                        flares={0.6}
+                        glow={0.9}
+                        sparks={0.5}
+                        particleCount={12000}
+                        fill={0.55}
+                        motion="orbit"
+                        particleShape="round"
+                        depth={0.7}
+                        sway={0.6}
+                        twinkle={0.55}
+                        haze={0.6}
+                        speed={0.8}
+                        dustSpeed={0.8}
+                        interactive
+                        hoverStrength={0.7}
+                        intro
+                    />
+                </div>
+            </div>
 
-      {/* Hero content */}
-      <div className="mx-auto flex min-h-screen max-w-[1800px] flex-col justify-center px-6 pb-28 pt-[21rem] sm:px-10 sm:pt-36 lg:px-16">
-        {/* Eyebrow */}
-        <div className="mb-8 flex items-center gap-4">
-          <span
-            className="h-3 w-3 shrink-0 rounded-full"
-            style={{
-              backgroundColor: 'var(--heading)',
-              boxShadow: '0 0 22px var(--glow)',
-            }}
-          />
+            {/* Hero Content */}
+            <div className="mx-auto flex min-h-screen max-w-[1800px] flex-col justify-center px-6 pb-28 pt-[21rem] sm:px-10 sm:pt-36 lg:px-16">
 
-
-        </div>
-
-        {/* Main heading */}
-        <h1 className="relative z-10 max-w-5xl text-[clamp(3.5rem,9vw,8.5rem)] font-black leading-[0.88] tracking-[-0.065em] text-[#043473] dark:text-[#D7D6AE]">
-          Build what
-          <br />
-          comes{' '}
-          <span className="text-[#28518A] dark:text-[#E4D076]">
+                {/* Main Heading */}
+                <h1 className="relative z-10 max-w-5xl text-[clamp(3.5rem,9vw,8.5rem)] font-black leading-[0.88] tracking-[-0.065em] text-[#043473] dark:text-[#D7D6AE]">
+                    Build what
+                    <br />
+                    comes{' '}
+                    <span className="text-[#28518A] dark:text-[#E4D076]">
             next.
           </span>
-        </h1>
+                </h1>
 
-        {/* Description */}
-        <p className="mt-8 max-w-xl text-base leading-8 text-fg-muted sm:text-lg sm:leading-9">
-          A community of women engineers turning curiosity into capability,
-          one experiment, one conversation, and one brave idea at a time.
-        </p>
+                {/* Description */}
+                <p className="mt-8 max-w-xl text-base leading-8 text-fg-muted sm:text-lg sm:leading-9">
+                    A community of women engineers turning curiosity into capability,
+                    one experiment, one conversation, and one brave idea at a time.
+                </p>
 
-        {/* Call-to-action buttons */}
-        <div className="relative z-20 mt-9 flex flex-wrap items-center gap-4">
-          {/* Primary CTA */}
-          <StarBorder
-            as="a"
-            href="#events"
-            theme="dark"
-            color="#8B9091"
-            trailColor="#476998"
-            backgroundColor="#043473"
-            textColor="#D7D6AE"
-            borderColor="rgba(139, 144, 145, 0.35)"
-            duration={5}
-            thickness={1}
-            radius={999}
-            trailLength={0.22}
-            stars={1}
-            glow={0.25}
-            sparkle={false}
-            hover="lap"
-            clickPulse
-            className="group min-h-[60px] gap-5 px-7 text-sm font-bold tracking-wide shadow-lg transition duration-300 hover:-translate-y-1"
-          >
-            EXPLORE EVENTS
+                {/* Call-to-action Buttons */}
+                <div className="relative z-20 mt-9 flex flex-wrap items-center gap-4">
 
-            <span className="text-xl transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                    {/* Primary CTA */}
+                    <StarBorder
+                        as="a"
+                        href="#events"
+                        theme="dark"
+                        color="#8B9091"
+                        trailColor="#476998"
+                        backgroundColor="#043473"
+                        textColor="#D7D6AE"
+                        borderColor="rgba(139, 144, 145, 0.35)"
+                        duration={5}
+                        thickness={1}
+                        radius={999}
+                        trailLength={0.22}
+                        stars={1}
+                        glow={0.25}
+                        sparkle={false}
+                        hover="lap"
+                        clickPulse
+                        className="group min-h-[60px] gap-5 px-7 text-sm font-bold tracking-wide shadow-lg transition duration-300 hover:-translate-y-1"
+                    >
+                        EXPLORE EVENTS
+
+                        <span className="text-xl transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
               ↗
             </span>
-          </StarBorder>
+                    </StarBorder>
 
-          {/* Secondary CTA */}
-          <StarBorder
-    as="a"
-    href="#about"
-    theme="light"
-    color="#476998"
-    trailColor="#8B9091"
-    backgroundColor="#F0F0E5"
-    textColor="#043473"
-    borderColor="rgba(71, 105, 152, 0.45)"
-    duration={5}
-    thickness={1}
-    radius={999}
-    trailLength={0.22}
-    stars={1}
-    glow={0.12}
-    sparkle={false}
-    hover="lap"
-    clickPulse
-    className="group min-h-[60px] gap-5 px-7 text-sm font-bold tracking-wide shadow-sm transition duration-300 hover:-translate-y-1"
->
-    OUR STORY
-    <span className="text-lg transition-transform duration-300 group-hover:translate-y-1">
-        ↓
-    </span>
-</StarBorder>
-</div>
+                    {/* Secondary CTA */}
+                    <StarBorder
+                        as="a"
+                        href="#about"
+                        theme="light"
+                        color="#476998"
+                        trailColor="#8B9091"
+                        backgroundColor="#F0F0E5"
+                        textColor="#043473"
+                        borderColor="rgba(71, 105, 152, 0.45)"
+                        duration={5}
+                        thickness={1}
+                        radius={999}
+                        trailLength={0.22}
+                        stars={1}
+                        glow={0.12}
+                        sparkle={false}
+                        hover="lap"
+                        clickPulse
+                        className="group min-h-[60px] gap-5 px-7 text-sm font-bold tracking-wide shadow-sm transition duration-300 hover:-translate-y-1"
+                    >
+                        OUR STORY
 
-        {/* Brand statement */}
-        <div className="mt-12 flex items-center gap-3">
-          <span
-            className="h-px w-12"
-            style={{ backgroundColor: 'var(--secondary)' }}
-          />
+                        <span className="text-lg transition-transform duration-300 group-hover:translate-y-1">
+              ↓
+            </span>
+                    </StarBorder>
 
+                </div>
 
-        </div>
-      </div>
+            </div>
 
+            {/* Bottom accent line */}
+            <div
+                className="absolute bottom-0 left-0 h-1.5 w-1/3"
+                style={{ backgroundColor: 'var(--secondary)' }}
+            />
 
-
-      {/* Bottom accent line */}
-      <div
-        className="absolute bottom-0 left-0 h-1.5 w-1/3"
-        style={{ backgroundColor: 'var(--secondary)' }}
-      />
-    </section>
-  );
+        </section>
+    );
 }
